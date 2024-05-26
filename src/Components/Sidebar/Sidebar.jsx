@@ -26,12 +26,24 @@ const Sidebar = () => {
         }else{
             setIsSearchVisible(false)
         }
+        if(title === "Message"){
+            navigate("/message")
+        }
+        if(title === "Notification"){
+            navigate("/notification")
+        }
+        if(title === "Reels"){
+            navigate("/reels")
+        }
+        if(title === "Explore"){
+            navigate("/explore");
+        }
     }
   return (
     <div className='sticky top-0 h-[100vh] flex'>
-        <div className={`flex flex-col justify-between h-full ${activeTab === "Search"?"px-0 mr-0":"px-2 mr-16"}`}>
+        <div className={`flex flex-col justify-between h-full ${activeTab === "Search" || activeTab === "Message" || activeTab === "Notification" ?"px-0 mr-0":"px-2 mr-16"} `}>
             {<div>
-                {activeTab !== "Search" && <div className='pt-10'>
+                {activeTab !== "Search" && activeTab !== "Message"  && activeTab !== "Notification" && <div className='pt-10'>
                     <img className='w-40' src="https://i.imgur.com/zqpwkLQ.png" alt="" />
                 </div>}
                 <div className='mt-10'>
@@ -39,14 +51,14 @@ const Sidebar = () => {
                     mainu.map((item) => 
                     <div onClick={()=>handleTabClick(item.title)} className='flex items-center mb-5 cursor-pointer text-lg'>
                         {activeTab === item.title? item.activeIcon:item.icon}
-                        {activeTab !== "Search" && <p className={`${activeTab===item.title?"font-bold":"font-semibold"}`}>{item.title}</p>}
+                        {activeTab !== "Search" && activeTab !== "Message" && activeTab !== "Notification" && <p className={`${activeTab===item.title?"font-bold":"font-semibold"}`}>{item.title}</p>}
                     </div>
                 )}
                 </div>
             </div>}
                     <div className='flex items-center cursor-pointer pb-5'>
                         <IoReorderThreeOutline className='text-2xl'/>
-                        {activeTab !== "Search" && <p className='ml-7'>More</p>}
+                        {activeTab !== "Search" && activeTab !== "Message" &&  activeTab !== "Notification" && <p className='ml-7'>More</p>}
                     </div>
         </div>
         

@@ -3,9 +3,13 @@ import { AiOutlineTable, AiOutlineUser } from 'react-icons/ai'
 import { BiBookmark } from 'react-icons/bi'
 import { RiVideoAddLine } from 'react-icons/ri'
 import ReqUserPostCard from './ReqUserPostCard'
+import Reels from './Reels'
+import Saved from './Saved'
+import Tagged from './Tagged'
 
 const ReqUserPostPart = () => {
-    const [activeTab,setActiveTab] = useState()
+    const [activeTab,setActiveTab] = useState('Post')
+    
     const tabs = [
         {
             tab : "Post",
@@ -36,9 +40,18 @@ const ReqUserPostPart = () => {
             )}
         </div>
         <div>
-            <div className='flex flex-wrap'>
+            {activeTab === "Post" && <div className='flex flex-wrap'>
                 {[1,1,1,1,1,1].map((item)=><ReqUserPostCard />)}
-            </div>
+            </div>}
+            {activeTab === "Reels" && <div className='flex flex-wrap'>
+                {[1,1,1,1,1,1].map((item)=><Reels/>)}
+            </div>}
+            {activeTab === "Saved" && <div className='flex flex-wrap'>
+                {[1,1,1,1,1,1].map((item)=><Saved/>)}
+            </div>}
+            {activeTab === "Tagged" && <div className='flex flex-wrap'>
+                {[1,1,1,1,1,1].map((iten)=><Tagged/>)}
+            </div>}
         </div>
     </div>
   )
